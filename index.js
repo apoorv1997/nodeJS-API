@@ -1,0 +1,63 @@
+const express = require('express')
+const http = require('http')
+const appConfig = require('./config/appConfig')
+const fs = require('fs')
+const mongoose = require('mongoose')
+const cookieParser = require('cookie-parser')
+const bodyParser = require('body-parser')
+
+const app = express()
+
+//middlewares
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(cookieParser())
+
+let modelsPath = './models'
+fs.readdirSync(modelsPath).forEach(function(file) {
+        if (~file.indexOf('.js')) {
+            console.log(file)
+            require(modelsPath + '/' + file)
+        }
+    })
+    // end Bootstrap models
+
+
+
+// Bootstrap route
+let routesPath = './routes'
+fs.readdirSync(routesPath).forEach(function(file) {
+    if (~file.indexOf('.js')) {
+        console.log("including the following file");
+        console.log(routesPath + '/' + file)
+        let route = require(routesPath + '/' + file);
+        route.setRouter(app);
+    }
+});
+
+app.listen(appConfig.port, () => {
+    console.log("app listening on port 3000");
+    let db = mongoose.connect(appConfig.db.uri, { useMongoClient: true });
+})
+
+
+
+
+// handling mongoose connection error
+mongoose.connection.on('error', function(err) {
+    console.log('database connection error');
+    console.log(err)
+
+}); // end mongoose connection error
+
+// handling mongoose success event
+mongoose.connection.on('open', function(err) {
+    if (err) {
+        console.log("database error");
+        console.log(err);
+
+    } else {
+        console.log("database connection open success");
+    }
+
+}); // end mongoose connection open handler
