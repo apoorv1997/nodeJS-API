@@ -5,6 +5,8 @@ const fs = require('fs')
 const mongoose = require('mongoose')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
+const globalErrorMiddleware = require('./middlewares/appErrorHandler')
+const routeLoggerMiddleware = require('./middlewares/routeLogger')
 
 const app = express()
 
@@ -12,6 +14,8 @@ const app = express()
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
+app.use(globalErrorMiddleware.globalErrorHandler)
+app.use(routeLoggerMiddleware.logIp)
 
 let modelsPath = './models'
 fs.readdirSync(modelsPath).forEach(function(file) {
@@ -34,6 +38,8 @@ fs.readdirSync(routesPath).forEach(function(file) {
         route.setRouter(app);
     }
 });
+
+app.use(globalErrorMiddleware.globalNotFoundHandler)
 
 app.listen(appConfig.port, () => {
     console.log("app listening on port 3000");

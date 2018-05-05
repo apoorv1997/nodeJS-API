@@ -193,6 +193,8 @@ let setRouter = (app) => {
 	   }
 	 */
 
+    app.get(baseUrl + '/cart', prodController.getAllCart);
+
 }
 module.exports = {
     setRouter: setRouter

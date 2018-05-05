@@ -43,6 +43,11 @@ let productSchema = new Schema({
     },
 })
 
-
+let Cart = new Schema({
+    id: {
+        type: String
+    }
+})
 
 mongoose.model('Product', productSchema);
+mongoose.model('Cart', Cart);
