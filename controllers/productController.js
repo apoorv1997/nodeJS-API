@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const shortid = require('shortid');
 
 const ProdModel = mongoose.model('Product')
-
 let getAllProducts = (req, res) => {
     ProdModel.find().select('-__v -_id').lean().exec((err, result) => {
         if (err) {
@@ -38,9 +37,12 @@ let createProduct = (req, res) => {
 
     let newProduct = new ProdModel({
         productId: productId,
+        dateAdded: today,
         productName: req.body.productName,
         productType: req.body.productType,
         isAvailable: true,
+        isAddedToCart: false,
+        productQuantity: req.body.productQuantity,
         productRating: req.body.productRating,
         productPrice: req.body.productPrice,
         productReview: req.body.productReview
@@ -51,6 +53,54 @@ let createProduct = (req, res) => {
             res.send(err)
         } else {
             res.send(result)
+        }
+    })
+}
+
+let addedToCart = (req, res) => {
+    ProdModel.findOne({ 'productId': req.params.productId }, (err, result) => {
+        if (err) {
+            res.send(err)
+            console.log(err)
+        } else if (result == undefined || result == null || result == '') {
+            console.log("No product found");
+            res.send("No product fond");
+        } else {
+            result.isAddedToCart = true;
+            result.save(function(err, result) {
+                if (err) {
+                    res.send(err)
+                    console.log(err)
+                } else {
+                    res.send(result)
+                }
+            })
+        }
+    })
+}
+
+let removeFromCart = (req, res) => {
+    ProdModel.findOne({ 'productId': req.params.productId }, (err, result) => {
+        if (err) {
+            res.send(err)
+            console.log(err)
+        } else if (result == undefined || result == null || result == '') {
+            res.send("No product found");
+            console.log("No product found");
+        } else {
+            if (result.isAddedToCart == true) {
+                result.isAddedToCart = false;
+                result.save(function(err, result) {
+                    if (err) {
+                        console.log(err)
+                        res.send(err)
+                    } else {
+                        res.send(result)
+                    }
+                })
+            } else {
+                res.send("product already removed");
+            }
         }
     })
 }
@@ -77,6 +127,7 @@ let increaseQuantity = (req, res) => {
         }
     });
 }
+
 
 let deleteProduct = (req, res) => {
     ProdModel.remove({ 'productId': req.params.productId }, (err, result) => {
@@ -111,5 +162,7 @@ module.exports = {
     increaseQuantity: increaseQuantity,
     viewProduct: viewProduct,
     deleteProduct: deleteProduct,
-    editProduct: editProduct
+    editProduct: editProduct,
+    addedToCart: addedToCart,
+    removeFromCart: removeFromCart
 }

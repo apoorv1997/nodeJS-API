@@ -10,6 +10,9 @@ let productSchema = new Schema({
         type: String,
         default: ''
     },
+    dateAddded: {
+        type: Date
+    },
     productType: {
         type: String,
         default: ''
@@ -34,6 +37,12 @@ let productSchema = new Schema({
         type: Boolean,
         default: false
     },
+    isAddedToCart: {
+        type: Boolean,
+        default: false
+    },
 })
+
+
 
 mongoose.model('Product', productSchema);
