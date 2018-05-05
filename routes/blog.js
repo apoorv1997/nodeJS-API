@@ -14,8 +14,12 @@ let setRouter = (app) => {
 	 *
 	 *
 	 *  @apiSuccessExample {json} Success-Response:
-	 *  
-		{
+	 * {
+	    "error": false,
+	    "message": "All Blog Details Found",
+	    "status": 200,
+	    "data": [ 
+					{
 						"productName": "string",
 						"productType": "string",
 						"productRating": number,
@@ -24,7 +28,10 @@ let setRouter = (app) => {
                         "productId": "string",
 						"productQuantity": number,
 						"productPrice": number,
+					}
+				]
 		}
+
 	  @apiErrorExample {json} Error-Response:
 	 *
 	 * {
@@ -44,16 +51,24 @@ let setRouter = (app) => {
 	 *
 	 *  @apiSuccessExample {json} Success-Response:
 	 *  {
-	    			"productName":"string",
-	    			"__v": number,
-				    "productType": "string",
-					"productRating":number,
-					"productReview":"string",
-					"isAvailable":boolean,
-					"productId":"string",
-					"productPrice":number,
-					"__id": number
+	    "error": false,
+	    "message": "All Blog Details Found",
+	    "status": 200,
+	    "data": [
+					{
+	    				"productName":"string",
+	    				"__v": number,
+				    	"productType": "string",
+						"productRating":number,
+						"productReview":"string",
+						"isAvailable":boolean,
+						"productId":"string",
+						"productPrice":number,
+						"__id": number
+					}
+				]
 		}
+
 	  @apiErrorExample {json} Error-Response:
 	 *
 	 * {
@@ -77,21 +92,27 @@ let setRouter = (app) => {
 	 *
 	 *  @apiSuccessExample {json} Success-Response:
 	 *  {
-            "productName":"string",
-            "productType":"string",
-            "productRating":number,
-            "productReview":"string",
-            "productId":"string",
-            "productQuantity":number,
-            "productPrice":number,
-            "isAddedToCart":boolean
-
-		}
+	    "error": false,
+	    "message": "All Blog Details Found",
+	    "status": 200,
+	    "data": [
+				{
+            			"productName":"string",
+            			"productType":"string",
+            			"productRating":number,
+            			"productReview":"string",
+            			"productId":"string",
+            			"productQuantity":number,
+            			"productPrice":number,
+            			"isAddedToCart":boolean
+				}
+			]
+	}
 	  @apiErrorExample {json} Error-Response:
 	 *
 	 * {
 	    "error": true,
-	    "message": "Error Occured.,
+	    "message": "Error Occured.",
 	    "status": 500,
 	    "data": null
 	   }
@@ -105,15 +126,22 @@ let setRouter = (app) => {
 	 * @apiParam {String} productId productID of the product passed as the URL parameter
 	 *
 	 *  @apiSuccessExample {json} Success-Response:
-	 *  {
-        "n":1,
-        "ok":1
+	 *{
+	    "error": false,
+	    "message": "All Blog Details Found",
+	    "status": 200,
+	    "data": [
+					{
+        				"n":1,
+        				"ok":1
+					}
+				]
 		}
 	  @apiErrorExample {json} Error-Response:
 	 *
 	 * {
 	    "error": true,
-	    "message": "Error Occured.,
+	    "message": "Error Occured.",
 	    "status": 500,
 	    "data": null
 	   }
@@ -129,7 +157,11 @@ let setRouter = (app) => {
 	 * @apiParam {String} productId productID of the product passed as the URL parameter
 	 *
 	 *  @apiSuccessExample {json} Success-Response:
-	 *  
+	 *  {
+	    "error": false,
+	    "message": "All Blog Details Found",
+	    "status": 200,
+	    "data": [
 					{
                         "productName":"string",
                         "productType":"string",
@@ -137,12 +169,14 @@ let setRouter = (app) => {
                         "productReview":"string",
                         "isAvailable":boolean,
                         "isAddedToCart":boolean
-                    }
+					}
+				]
+		}
 	  @apiErrorExample {json} Error-Response:
 	 *
 	 * {
 	    "error": true,
-	    "message": "Error Occured.,
+	    "message": "Error Occured.",
 	    "status": 500,
 	    "data": null
 	   }
@@ -158,14 +192,21 @@ let setRouter = (app) => {
 	 * @apiParam {String} blogId blogId of the blog passed as the URL parameter
 	 *
 	 *  @apiSuccessExample {json} Success-Response:
-	 *  {
-            "isAddedToCart":true
-        }
+	 * {
+	    "error": false,
+	    "message": "All Blog Details Found",
+	    "status": 200,
+	    "data": [ 
+					{
+            			"isAddedToCart":true
+					}
+				]
+		}
 	  @apiErrorExample {json} Error-Response:
 	 *
 	 * {
 	    "error": true,
-	    "message": "Error Occured.,
+	    "message": "Error Occured.",
 	    "status": 500,
 	    "data": null
 	   }
@@ -180,20 +221,84 @@ let setRouter = (app) => {
 	 * @apiParam {String} productId productId of the product passed as the URL parameter
 	 *
 	 *  @apiSuccessExample {json} Success-Response:
-	 *  {
-            "isAddedToCart":false
-        }
+	 * {
+	    "error": false,
+	    "message": "All Blog Details Found",
+	    "status": 200,
+	    "data": [
+					{
+            			"isAddedToCart":false
+					}
+				]
+		}
 	  @apiErrorExample {json} Error-Response:
 	 *
 	 * {
 	    "error": true,
-	    "message": "Error Occured.,
+	    "message": "Error Occured.",
 	    "status": 500,
 	    "data": null
 	   }
 	 */
 
     app.get(baseUrl + '/cart', prodController.getAllCart);
+    /**
+	 * @api {get} /api/v1/Product/:productId/addtocart AddToCart product by productId
+	 * @apiVersion 0.0.1
+	 * @apiGroup add a product
+	 *
+	 * @apiParam {String} authToken The token for authentication.(Send authToken as query parameter, body parameter or as a header)
+	 * @apiParam {String} blogId blogId of the blog passed as the URL parameter
+	 *
+	 *  @apiSuccessExample {json} Success-Response:
+	 *  {
+	    "error": false,
+	    "message": "All Blog Details Found",
+	    "status": 200,
+	    "data": [
+					{
+            			"isAddedToCart":true
+					}
+				]
+		}
+	  @apiErrorExample {json} Error-Response:
+	 *
+	 * {
+	    "error": true,
+	    "message": "Error Occured.",
+	    "status": 500,
+	    "data": null
+	   }
+	 */
+
+    app.get(baseUrl + '/:productId/removefromcart', prodController.removeFromCart);
+    /**
+	 * @api {get} /api/v1/Product/:productId/removefromcart Read cart items by productId
+	 * @apiVersion 0.0.1
+	 * @apiGroup get details of cart
+	 *
+	 * @apiParam {String} productId productId of the product passed as the URL parameter
+	 *
+	 *  @apiSuccessExample {json} Success-Response:
+	 * {
+	    "error": false,
+	    "message": "All Blog Details Found",
+	    "status": 200,
+	    "data": [
+					{
+            			"id":String
+					}
+				]
+		}
+	  @apiErrorExample {json} Error-Response:
+	 *
+	 * {
+	    "error": true,
+	    "message": "Error Occured.",
+	    "status": 500,
+	    "data": null
+	   }
+	 */
 
 }
 module.exports = {

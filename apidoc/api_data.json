@@ -29,7 +29,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "{\n           \"isAddedToCart\":true\n       }",
+          "content": "{\n\t    \"error\": false,\n\t    \"message\": \"All Blog Details Found\",\n\t    \"status\": 200,\n\t    \"data\": [ \n\t\t\t\t\t{\n            \t\t\t\"isAddedToCart\":true\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t}",
           "type": "json"
         }
       ]
@@ -38,7 +38,55 @@
       "examples": [
         {
           "title": "Error-Response:",
-          "content": "\n{\n\t    \"error\": true,\n\t    \"message\": \"Error Occured.,\n\t    \"status\": 500,\n\t    \"data\": null\n\t   }",
+          "content": "\n{\n\t    \"error\": true,\n\t    \"message\": \"Error Occured.\",\n\t    \"status\": 500,\n\t    \"data\": null\n\t   }",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/blog.js",
+    "groupTitle": "add_a_product",
+    "name": "GetApiV1ProductProductidAddtocart"
+  },
+  {
+    "type": "get",
+    "url": "/api/v1/Product/:productId/addtocart",
+    "title": "AddToCart product by productId",
+    "version": "0.0.1",
+    "group": "add_a_product",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "authToken",
+            "description": "<p>The token for authentication.(Send authToken as query parameter, body parameter or as a header)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "blogId",
+            "description": "<p>blogId of the blog passed as the URL parameter</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": " {\n\t    \"error\": false,\n\t    \"message\": \"All Blog Details Found\",\n\t    \"status\": 200,\n\t    \"data\": [\n\t\t\t\t\t{\n            \t\t\t\"isAddedToCart\":true\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "\n{\n\t    \"error\": true,\n\t    \"message\": \"Error Occured.\",\n\t    \"status\": 500,\n\t    \"data\": null\n\t   }",
           "type": "json"
         }
       ]
@@ -98,7 +146,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": " {\n            \"productName\":\"string\",\n            \"productType\":\"string\",\n            \"productRating\":number,\n            \"productReview\":\"string\",\n            \"productId\":\"string\",\n            \"productQuantity\":number,\n            \"productPrice\":number,\n            \"isAddedToCart\":boolean\n\n\t\t}",
+          "content": " {\n\t    \"error\": false,\n\t    \"message\": \"All Blog Details Found\",\n\t    \"status\": 200,\n\t    \"data\": [\n\t\t\t\t{\n            \t\t\t\"productName\":\"string\",\n            \t\t\t\"productType\":\"string\",\n            \t\t\t\"productRating\":number,\n            \t\t\t\"productReview\":\"string\",\n            \t\t\t\"productId\":\"string\",\n            \t\t\t\"productQuantity\":number,\n            \t\t\t\"productPrice\":number,\n            \t\t\t\"isAddedToCart\":boolean\n\t\t\t\t}\n\t\t\t]\n\t}",
           "type": "json"
         }
       ]
@@ -107,7 +155,7 @@
       "examples": [
         {
           "title": "Error-Response:",
-          "content": "\n{\n\t    \"error\": true,\n\t    \"message\": \"Error Occured.,\n\t    \"status\": 500,\n\t    \"data\": null\n\t   }",
+          "content": "\n{\n\t    \"error\": true,\n\t    \"message\": \"Error Occured.\",\n\t    \"status\": 500,\n\t    \"data\": null\n\t   }",
           "type": "json"
         }
       ]
@@ -139,7 +187,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": " {\n        \"n\":1,\n        \"ok\":1\n\t\t}",
+          "content": "{\n\t    \"error\": false,\n\t    \"message\": \"All Blog Details Found\",\n\t    \"status\": 200,\n\t    \"data\": [\n\t\t\t\t\t{\n        \t\t\t\t\"n\":1,\n        \t\t\t\t\"ok\":1\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t}",
           "type": "json"
         }
       ]
@@ -148,7 +196,7 @@
       "examples": [
         {
           "title": "Error-Response:",
-          "content": "\n{\n\t    \"error\": true,\n\t    \"message\": \"Error Occured.,\n\t    \"status\": 500,\n\t    \"data\": null\n\t   }",
+          "content": "\n{\n\t    \"error\": true,\n\t    \"message\": \"Error Occured.\",\n\t    \"status\": 500,\n\t    \"data\": null\n\t   }",
           "type": "json"
         }
       ]
@@ -187,7 +235,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": " \n\t\t\t\t\t{\n                        \"productName\":\"string\",\n                        \"productType\":\"string\",\n                        \"productRating\":number,\n                        \"productReview\":\"string\",\n                        \"isAvailable\":boolean,\n                        \"isAddedToCart\":boolean\n                    }",
+          "content": " {\n\t    \"error\": false,\n\t    \"message\": \"All Blog Details Found\",\n\t    \"status\": 200,\n\t    \"data\": [\n\t\t\t\t\t{\n                        \"productName\":\"string\",\n                        \"productType\":\"string\",\n                        \"productRating\":number,\n                        \"productReview\":\"string\",\n                        \"isAvailable\":boolean,\n                        \"isAddedToCart\":boolean\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t}",
           "type": "json"
         }
       ]
@@ -196,7 +244,7 @@
       "examples": [
         {
           "title": "Error-Response:",
-          "content": "\n{\n\t    \"error\": true,\n\t    \"message\": \"Error Occured.,\n\t    \"status\": 500,\n\t    \"data\": null\n\t   }",
+          "content": "\n{\n\t    \"error\": true,\n\t    \"message\": \"Error Occured.\",\n\t    \"status\": 500,\n\t    \"data\": null\n\t   }",
           "type": "json"
         }
       ]
@@ -204,6 +252,47 @@
     "filename": "routes/blog.js",
     "groupTitle": "edit",
     "name": "PutApiV1ProductProductidEdit"
+  },
+  {
+    "type": "get",
+    "url": "/api/v1/Product/:productId/removefromcart",
+    "title": "Read cart items by productId",
+    "version": "0.0.1",
+    "group": "get_details_of_cart",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "productId",
+            "description": "<p>productId of the product passed as the URL parameter</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n\t    \"error\": false,\n\t    \"message\": \"All Blog Details Found\",\n\t    \"status\": 200,\n\t    \"data\": [\n\t\t\t\t\t{\n            \t\t\t\"id\":String\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "\n{\n\t    \"error\": true,\n\t    \"message\": \"Error Occured.\",\n\t    \"status\": 500,\n\t    \"data\": null\n\t   }",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/blog.js",
+    "groupTitle": "get_details_of_cart",
+    "name": "GetApiV1ProductProductidRemovefromcart"
   },
   {
     "type": "get",
@@ -215,7 +304,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": " \n\t\t{\n\t\t\t\t\t\t\"productName\": \"string\",\n\t\t\t\t\t\t\"productType\": \"string\",\n\t\t\t\t\t\t\"productRating\": number,\n\t\t\t\t\t\t\"isAvailable\": boolean,\n\t\t\t\t\t\t\"isAddedToCart\": boolean,\n                        \"productId\": \"string\",\n\t\t\t\t\t\t\"productQuantity\": number,\n\t\t\t\t\t\t\"productPrice\": number,\n\t\t}",
+          "content": "{\n\t    \"error\": false,\n\t    \"message\": \"All Blog Details Found\",\n\t    \"status\": 200,\n\t    \"data\": [ \n\t\t\t\t\t{\n\t\t\t\t\t\t\"productName\": \"string\",\n\t\t\t\t\t\t\"productType\": \"string\",\n\t\t\t\t\t\t\"productRating\": number,\n\t\t\t\t\t\t\"isAvailable\": boolean,\n\t\t\t\t\t\t\"isAddedToCart\": boolean,\n                        \"productId\": \"string\",\n\t\t\t\t\t\t\"productQuantity\": number,\n\t\t\t\t\t\t\"productPrice\": number,\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t}",
           "type": "json"
         }
       ]
@@ -256,7 +345,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "{\n           \"isAddedToCart\":false\n       }",
+          "content": "{\n\t    \"error\": false,\n\t    \"message\": \"All Blog Details Found\",\n\t    \"status\": 200,\n\t    \"data\": [\n\t\t\t\t\t{\n            \t\t\t\"isAddedToCart\":false\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t}",
           "type": "json"
         }
       ]
@@ -265,7 +354,7 @@
       "examples": [
         {
           "title": "Error-Response:",
-          "content": "\n{\n\t    \"error\": true,\n\t    \"message\": \"Error Occured.,\n\t    \"status\": 500,\n\t    \"data\": null\n\t   }",
+          "content": "\n{\n\t    \"error\": true,\n\t    \"message\": \"Error Occured.\",\n\t    \"status\": 500,\n\t    \"data\": null\n\t   }",
           "type": "json"
         }
       ]
@@ -297,7 +386,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": " {\n\t    \t\t\t\"productName\":\"string\",\n\t    \t\t\t\"__v\": number,\n\t\t\t\t    \"productType\": \"string\",\n\t\t\t\t\t\"productRating\":number,\n\t\t\t\t\t\"productReview\":\"string\",\n\t\t\t\t\t\"isAvailable\":boolean,\n\t\t\t\t\t\"productId\":\"string\",\n\t\t\t\t\t\"productPrice\":number,\n\t\t\t\t\t\"__id\": number\n\t\t}",
+          "content": " {\n\t    \"error\": false,\n\t    \"message\": \"All Blog Details Found\",\n\t    \"status\": 200,\n\t    \"data\": [\n\t\t\t\t\t{\n\t    \t\t\t\t\"productName\":\"string\",\n\t    \t\t\t\t\"__v\": number,\n\t\t\t\t    \t\"productType\": \"string\",\n\t\t\t\t\t\t\"productRating\":number,\n\t\t\t\t\t\t\"productReview\":\"string\",\n\t\t\t\t\t\t\"isAvailable\":boolean,\n\t\t\t\t\t\t\"productId\":\"string\",\n\t\t\t\t\t\t\"productPrice\":number,\n\t\t\t\t\t\t\"__id\": number\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t}",
           "type": "json"
         }
       ]
